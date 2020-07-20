@@ -30,7 +30,6 @@ const addBase = (g, colorMapping, legendObj) => {
     return legend;      
 };
 
-
 /**
  * Add legend to chart
  * @param {element} g 
