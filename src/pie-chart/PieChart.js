@@ -6,7 +6,17 @@ import { getcolors } from "./pieChartColorMappings";
 import { addLegend } from "./addLegend";
 
 const colorArray = [ "#82BEC0", "#0B575B", "#d9534f" ];
-const { width, height } = returnMargin(5, 10, 30, 100, 980, 350);
+
+const marginData = {  
+  top: 5, 
+  right: 10, 
+  bottom: 30, 
+  left: 100, 
+  width: 980,
+  height: 350
+};
+
+const { width, height } = returnMargin(marginData);
 
 const legendTextObj = {
   x_coord: 200,
@@ -74,8 +84,8 @@ export default class PieChart extends Component {
       return (
       <div className="center">
         <h1 className="margin-top-medium">Pie Chart</h1>
-        <div className="my-border">
-          <svg ref={node => this.node = node} width={1300} height={520}  id="svg-pie" ></svg> 
+        <div>
+          <svg ref={node => this.node = node} width={1300} height={450}  id="svg-pie" ></svg> 
         </div>            
       </div>
     );

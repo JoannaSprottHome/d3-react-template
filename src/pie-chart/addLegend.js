@@ -41,8 +41,7 @@ const addBase = (g, colorMapping, legendObj) => {
 const addLegend = (g, colorMapping, legendObj, rectObj, textObj) => {  
     const legend = addBase(g, colorMapping, legendObj);
     appendColoredSquares(legend, rectObj);
-    appendText(legend, textObj);     
-    
+    appendText(legend, textObj);        
 };    
 
 export { addLegend };
