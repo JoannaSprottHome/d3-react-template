@@ -6,7 +6,17 @@ import { getcolors } from "./pieChartColorMappings";
 import { addLegend } from "./addLegend";
 
 const colorArray = [ "#82BEC0", "#0B575B", "#d9534f" ];
-const { width, height } = returnMargin(5, 10, 30, 100, 980, 350);
+
+const marginData = {  
+  top: 5, 
+  right: 10, 
+  bottom: 30, 
+  left: 100, 
+  width: 980,
+  height: 350
+};
+
+const { width, height } = returnMargin(marginData);
 
 const legendTextObj = {
   x_coord: 200,

@@ -1,13 +1,9 @@
 /**
  * Returns Margin
- * @param {*} top 
- * @param {*} right 
- * @param {*} bottom 
- * @param {*} left 
- * @param {*} width 
- * @param {*} height 
+ * @param {*} marginData
  */
-const returnMargin = (top, right, bottom, left, width, height) => {
+const returnMargin = (marginData) => {
+    const { top, right, bottom, left, width, height } = marginData;
     return {    
         top, 
         right, 

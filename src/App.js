@@ -9,7 +9,6 @@ class App extends Component {
   render() {
       return (
       <div className="center">
-        {/* TODO PUT BACK IN */}
         <PieChart /> 
         <LineGraph />          
       </div>
