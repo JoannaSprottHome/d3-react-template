@@ -3,8 +3,10 @@ import * as d3Line from 'd3-shape';
 import { select, scaleLinear, scaleTime, axisBottom, axisLeft, max, min } from 'd3';
 import { returnMargin } from "../generic/margins";
 import '../App.css';
+import { getData } from "./getData";
 const { width, height, left, top } = returnMargin(2.5, 5, 15, 100, 350, 175);
-
+const graphData = getData();
+;
 const calculatePassRate = (passed, failed) => {
   return passed / (passed + failed) * 100;
 };
@@ -26,22 +28,7 @@ export default class LineGraph extends Component {
   }
 
   componentDidMount() {
-    this.createGraph([ 
-      {
-        x: "2020-07-21T11:11:43+00:00",
-        y: {
-          passed: 96,
-          failed: 6
-        }
-      },
-      {
-        x: "2020-07-20T11:11:43+00:00",
-        y: {
-          passed: 193,
-          failed: 18
-        }
-      }
-     ]);
+    this.createGraph(graphData);
   };
 
   createGraph(data) {
@@ -56,38 +43,37 @@ export default class LineGraph extends Component {
       timeSlots.push(new Date(data.x));      
     });
 
-    console.log(`timeSlots: ${JSON.stringify(timeSlots)}`);
     const maxArr = max(timeSlots).toString().replace(/:00 GMT.*/, "").split(/ 20.. /);
     const minArr = min(timeSlots).toString().replace(/:00 GMT.*/, "").split(/ 20.. /);
 
     const x = scaleTime().domain([min(timeSlots), max(timeSlots)]).range([0, width]),
     y = scaleLinear().domain([0, 100]).range([height, 0]);
 
-    const xAxis = axisBottom().scale(x).ticks(5),
+    const xAxis = axisBottom().scale(x).ticks(graphData.length -1), 
         yAxis = axisLeft().scale(y);
 
     const make_x_gridlines = () => {
-      return axisBottom(x).ticks(8);
+      return axisBottom(x).ticks(0); // PUT TICKS BACK HERE IF WANTED
     };    
 
     // Gridlines
     select(node).append("g")
       .attr("class", "grid")
-      .attr("transform", "translate(" + left + "," + (height + 5) + ")")
-      .call(make_x_gridlines()
-          .tickSize(-height)
-          .tickFormat(""));
+      .attr("transform", "translate(" + left + "," + (height + 13) + ")")
+      // .call(make_x_gridlines()
+      //     .tickSize(-height)
+      //     .tickFormat(""));
 
     // Append x-axis
     select(node).append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(" + left + "," + height + ")  ")
+      .attr("transform", "translate(" + (left) + "," + (height + 13) + ")  ")
       .call(xAxis);
       
     // Append y-axis  
     select(node).append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(" + left + "," + top + ")") 
+      .attr("transform", "translate(" + left + "," + (top + 10) + ")") 
       .call(yAxis);
       
     // Line 
@@ -98,7 +84,7 @@ export default class LineGraph extends Component {
     select(node).append("path")
       .datum(formattedData)
       .attr("fill", "none")
-      .attr("stroke", "3333ff")
+      .attr("stroke", "#0B575B")
       .attr("d", line);
       
     // Y-axis title-text
@@ -113,24 +99,10 @@ export default class LineGraph extends Component {
       
     // X-axis title-text
     select(node).append("text")
-      .attr("transform", "translate(" + (width/2 + 90) + "," + (height + top + 37.5) + ")")
+      .attr("transform", "translate(" + (width/2 + 90) + "," + (height + top + 47.5) + ")")
       .attr("class", "svg-text")
       .style("text-anchor", "middle")
-      .text("Date");
-
-    // Earliest time-frame text along bottom
-    select(node).append("text")
-      .attr("transform", "translate(" + (60) + "," + (height + top + 37.5) + ")")
-      .attr("font-weight", "700")
-      .attr("id", "minText")
-      .text(minArr[0]);
-
-    // Earliest time-frame text along bottom  
-    select(node).append("text")
-      .attr("transform", "translate(" + (width/2 + 190) + "," + (height + top + 37.5) + ")")
-      .attr("font-weight", "700")
-      .attr("id", "maxText")
-      .text(maxArr[0]);  
+      .text("Date");  
   }
 
   render() {
@@ -138,7 +110,7 @@ export default class LineGraph extends Component {
       <div className="center">
         <h1 className="margin-top-medium">Line Graph</h1>
         <div>
-          <svg ref={node => this.node = node} width={420} height={520}  id="svg-line" className="centerGraph"></svg> 
+          <svg ref={node => this.node = node} width={420} height={220}  id="svg-line" className="centerGraph"></svg> 
         </div>            
       </div>
     );

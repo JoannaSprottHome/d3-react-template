@@ -75,7 +75,7 @@ export default class PieChart extends Component {
       <div className="center">
         <h1 className="margin-top-medium">Pie Chart</h1>
         <div>
-          <svg ref={node => this.node = node} width={1300} height={520}  id="svg-pie" ></svg> 
+          <svg ref={node => this.node = node} width={1300} height={450}  id="svg-pie" ></svg> 
         </div>            
       </div>
     );

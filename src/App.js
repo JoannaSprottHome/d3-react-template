@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import PieChart from "./pie-chart/PieChart";
+import PieChart from "./pie-chart/PieChart";
 import LineGraph from "./line-graph/LineGraph"
 
 
@@ -10,7 +10,7 @@ class App extends Component {
       return (
       <div className="center">
         {/* TODO PUT BACK IN */}
-        {/* <PieChart />  */}
+        <PieChart /> 
         <LineGraph />          
       </div>
     );
