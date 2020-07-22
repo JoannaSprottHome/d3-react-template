@@ -4,9 +4,9 @@ import { select, scaleLinear, scaleTime, axisBottom, axisLeft, max, min } from '
 import { returnMargin } from "../generic/margins";
 import '../App.css';
 import { getData } from "./getData";
-import { addYAxisText, addXAxisText } from "./axis";
-import { xAxisTextParam, yAxisTextParam, marginData } from "./parameters";
-const { width, height, left, top } = returnMargin(marginData);
+import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./axis";
+import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam } from "./parameters";
+const { width, height, left } = returnMargin(marginData);
 const graphData = getData();
 
 export default class LineGraph extends Component {
@@ -28,19 +28,7 @@ export default class LineGraph extends Component {
           y = scaleLinear().domain([0, max(values)]).range([height, 0]);
 
     const xAxis = axisBottom().scale(x).ticks(graphData.length -1), 
-          yAxis = axisLeft().scale(y);   
-
-    // Append x-axis
-    select(node).append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(" + (left) + "," + (height + 13) + ")  ")
-      .call(xAxis);
-      
-    // Append y-axis  
-    select(node).append("g")
-      .attr("class", "y axis")
-      .attr("transform", "translate(" + left + "," + (top + 10) + ")") 
-      .call(yAxis);
+          yAxis = axisLeft().scale(y);      
       
     // Line 
     const line = d3Line.line()
@@ -53,9 +41,10 @@ export default class LineGraph extends Component {
       .attr("stroke", "#0B575B")
       .attr("d", line);
       
-    addXAxisText(node, xAxisTextParam);
-    addYAxisText(node, yAxisTextParam);
- 
+    appendXAxis(node, xAxis, xAxisParam);
+    appendYAxis(node, yAxis, yAxisParam);   
+    appendXAxisText(node, xAxisTextParam);
+    appendYAxisText(node, yAxisTextParam); 
   }
 
   render() {
