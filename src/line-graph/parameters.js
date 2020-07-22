@@ -9,7 +9,15 @@ const marginData = {
     width: 350,
     height: 175
 };
-const { width, height, top } = returnMargin(marginData);
+const { width, height, top, left } = returnMargin(marginData);
+
+const xAxisParam = {
+    transform: "translate(" + (left) + "," + (height + 13) + ")  "
+};
+
+const yAxisParam = {
+    transform: "translate(" + left + "," + (top + 10) + ")"
+};
 
 const yAxisTextParam = {
     transform: "rotate(-90)",
@@ -25,4 +33,4 @@ const xAxisTextParam = {
     text: "Date"
 };
 
-export { xAxisTextParam, yAxisTextParam, marginData };
+export { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam };
