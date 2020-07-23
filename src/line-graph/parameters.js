@@ -1,6 +1,7 @@
 
 import { returnMargin } from "../generic/margins";
 
+// MARGIN ////////////////////////////////
 const marginData = {  
     top: 2.5, 
     right: 5, 
@@ -11,6 +12,7 @@ const marginData = {
 };
 const { width, height, top, left } = returnMargin(marginData);
 
+// AXIS ////////////////////////////////
 const xAxisParam = {
     transform: "translate(" + (left) + "," + (height + 13) + ")  "
 };
@@ -33,4 +35,16 @@ const xAxisTextParam = {
     text: "Date"
 };
 
-export { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam };
+// LINE ////////////////////////////////
+const lineParam = {
+    strokeColor: "#0B575B"
+};
+
+export { 
+    xAxisTextParam, 
+    yAxisTextParam, 
+    marginData, 
+    xAxisParam, 
+    yAxisParam,
+    lineParam 
+};
