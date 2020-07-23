@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import * as d3Line from 'd3-shape';
-import { select, scaleLinear, scaleTime, axisBottom, axisLeft, max, min } from 'd3';
+import { scaleLinear, scaleTime, axisBottom, axisLeft, max, min } from 'd3';
 import { returnMargin } from "../generic/margins";
 import '../App.css';
 import { getData } from "./getData";
 import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./axis";
-import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam } from "./parameters";
+import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam, lineParam } from "./parameters";
+import { appendLine } from "./line";
 const { width, height, left } = returnMargin(marginData);
 const graphData = getData();
 
@@ -26,21 +27,13 @@ export default class LineGraph extends Component {
     const values = data.map(data => new Date(data.y));
     const x = scaleTime().domain([min(time), max(time)]).range([0, width]),
           y = scaleLinear().domain([0, max(values)]).range([height, 0]);
-
     const xAxis = axisBottom().scale(x).ticks(graphData.length -1), 
           yAxis = axisLeft().scale(y);      
-      
-    // Line 
     const line = d3Line.line()
-      .x(function(d) { return x(new Date(d.x)) + left; })
-      .y(function (d) { return y(d.y); });
-
-    select(node).append("path")
-      .datum(data)
-      .attr("fill", "none")
-      .attr("stroke", "#0B575B")
-      .attr("d", line);
+          .x(function(d) { return x(new Date(d.x)) + left; })
+          .y(function (d) { return y(d.y); });
       
+    appendLine(node, data, line, lineParam );  
     appendXAxis(node, xAxis, xAxisParam);
     appendYAxis(node, yAxis, yAxisParam);   
     appendXAxisText(node, xAxisTextParam);
