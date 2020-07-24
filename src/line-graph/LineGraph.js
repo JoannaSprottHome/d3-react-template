@@ -8,7 +8,6 @@ import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./ax
 import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam, lineParam } from "./parameters";
 import { appendLine } from "./line";
 const { width, height, left } = returnMargin(marginData);
-const graphData = getData();
 
 export default class LineGraph extends Component {
 
@@ -18,22 +17,34 @@ export default class LineGraph extends Component {
   }
 
   componentDidMount() {
-    this.createGraph(graphData);
+    this.createGraph(getData());
   };
 
   createGraph(data) {
     const node = this.node;
-    const time = data.map(data => new Date(data.x));
-    const values = data.map(data => new Date(data.y));
+    // Construct the scale and axis from only 1 line
+    // skip this step and just use data if you have 1 line (i.e. 1D array)
+    const dataOneLine = data[0];
+    const time = dataOneLine.map(data => new Date(data.x));
+    // For one line, only need to map 1 level
+    const valueMap = data.map(each => {
+      return each.map(data => data.y); 
+    });
+    const values = dataOneLine.map(data => data.y);
     const x = scaleTime().domain([min(time), max(time)]).range([0, width]),
-          y = scaleLinear().domain([0, max(values)]).range([height, 0]);
-    const xAxis = axisBottom().scale(x).ticks(graphData.length -1), 
+          y = scaleLinear().domain([0, max(valueMap.flat()) + 5]).range([height, 0]);
+    const xAxis = axisBottom().scale(x).ticks(dataOneLine.length -1), 
           yAxis = axisLeft().scale(y);      
     const line = d3Line.line()
           .x(function(d) { return x(new Date(d.x)) + left; })
           .y(function (d) { return y(d.y); });
       
-    appendLine(node, data, line, lineParam );  
+    if (data && data.length > 0) {
+      data.forEach((element, index) => {
+        appendLine(node, element, line, lineParam.strokeColors[index]); 
+      });
+    }
+    
     appendXAxis(node, xAxis, xAxisParam);
     appendYAxis(node, yAxis, yAxisParam);   
     appendXAxisText(node, xAxisTextParam);

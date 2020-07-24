@@ -14,11 +14,11 @@ const { width, height, top, left } = returnMargin(marginData);
 
 // AXIS ////////////////////////////////
 const xAxisParam = {
-    transform: "translate(" + (left) + "," + (height + 13) + ")  "
+    transform: "translate(" + (left) + "," + (height + 3) + ")  "
 };
 
 const yAxisParam = {
-    transform: "translate(" + left + "," + (top + 10) + ")"
+    transform: "translate(" + left + "," + (top) + ")"
 };
 
 const yAxisTextParam = {
@@ -30,14 +30,14 @@ const yAxisTextParam = {
 };
 
 const xAxisTextParam = {
-    transform: "translate(" + (width/2 + 90) + "," + (height + top + 57.5) + ")", 
+    transform: "translate(" + (width/2 + 90) + "," + (height + top + 47.5) + ")", 
     text_anchor: "middle", 
     text: "Date"
 };
 
 // LINE ////////////////////////////////
 const lineParam = {
-    strokeColor: "#0B575B"
+    strokeColors: ["#0B575B", "#d9534f", "#82BEC0"]
 };
 
 export { 

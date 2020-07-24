@@ -8,9 +8,9 @@ import LineGraph from "./line-graph/LineGraph"
 class App extends Component {
   render() {
       return (
-      <div className="center">
+      <div className="center margin-bottom-medium">
         <PieChart /> 
-        <LineGraph />          
+        <LineGraph />   
       </div>
     );
   }
