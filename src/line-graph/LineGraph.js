@@ -25,11 +25,14 @@ export default class LineGraph extends Component {
     // Construct the scale and axis from only 1 line
     // skip this step and just use data if you have 1 line (i.e. 1D array)
     const dataOneLine = data[0];
-
     const time = dataOneLine.map(data => new Date(data.x));
-    const values = dataOneLine.map(data => new Date(data.y));
+    // For one line, only need to map 1 level
+    const valueMap = data.map(each => {
+      return each.map(data => data.y); 
+    });
+    const values = dataOneLine.map(data => data.y);
     const x = scaleTime().domain([min(time), max(time)]).range([0, width]),
-          y = scaleLinear().domain([0, max(values)]).range([height, 0]);
+          y = scaleLinear().domain([0, max(valueMap.flat()) + 5]).range([height, 0]);
     const xAxis = axisBottom().scale(x).ticks(dataOneLine.length -1), 
           yAxis = axisLeft().scale(y);      
     const line = d3Line.line()
