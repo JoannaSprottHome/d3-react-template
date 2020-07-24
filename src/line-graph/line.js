@@ -1,8 +1,6 @@
 import { select } from 'd3';
 
-const appendLine = (node, data, line, pathOptions) => {
-    const { strokeColor } = pathOptions;
-
+const appendLine = (node, data, line, strokeColor) => {
     select(node).append("path")
       .datum(data)
       .attr("fill", "none")

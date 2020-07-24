@@ -37,7 +37,7 @@ const xAxisTextParam = {
 
 // LINE ////////////////////////////////
 const lineParam = {
-    strokeColor: "#0B575B"
+    strokeColors: ["#0B575B", "#d9534f", "#82BEC0"]
 };
 
 export { 
