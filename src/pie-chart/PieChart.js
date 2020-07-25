@@ -3,7 +3,7 @@ import * as shape from 'd3-shape';
 import { select } from 'd3';
 import { returnMargin } from "../generic/margins";
 import { getcolors } from "./pieChartColorMappings";
-import { addLegend } from "./addLegend";
+import { addLegend } from "../legend/addLegend";
 
 const colorArray = [ "#82BEC0", "#0B575B", "#d9534f" ];
 
@@ -17,23 +17,6 @@ const marginData = {
 };
 
 const { width, height } = returnMargin(marginData);
-
-const legendTextObj = {
-  x_coord: 200,
-  y_coord: 14,
-  text_anchor: "end",
-  font_size: "14px"
-};
-
-const legendRectObj = {
-  x: 210,
-  width: 18,
-  height: 18
-};
-
-const legendObj = {
-  distance_between: 20
-};
 
 export default class PieChart extends Component {
 
@@ -73,10 +56,7 @@ export default class PieChart extends Component {
         
     addLegend(
       g,
-      colorMapping,
-      legendObj,
-      legendRectObj,
-      legendTextObj     
+      colorMapping    
     );   
   }
 

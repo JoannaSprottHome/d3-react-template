@@ -8,7 +8,7 @@ import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./ax
 import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam, lineParam } from "./parameters";
 import { appendLine } from "./line";
 import { addLegend } from "../legend/addLegend";
-import { getcolors } from "./pieChartColorMappings";
+import { getcolors } from "./colorMappings";
 const { width, height, left } = returnMargin(marginData);
 
 export default class LineGraph extends Component {

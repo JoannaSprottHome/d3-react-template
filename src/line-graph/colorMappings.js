@@ -7,7 +7,7 @@ import { scaleOrdinal } from 'd3';
  */
 const getcolors = (data, colorArray) => {
     const colorMapping = data.map((each, index) => {
-        return { result: `${"Category 1"}`, color: colorArray[index] }
+        return { result: `${"Title..."}`, color: colorArray[index] }
     });
     return {
         colorMapping, 
