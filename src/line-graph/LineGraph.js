@@ -7,27 +7,9 @@ import { getData } from "./getData";
 import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./axis";
 import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam, lineParam } from "./parameters";
 import { appendLine } from "./line";
-import { addLegend } from "./addLegend";
+import { addLegend } from "../legend/addLegend";
 import { getcolors } from "./pieChartColorMappings";
 const { width, height, left } = returnMargin(marginData);
-
-// TODO REFACTOR
-const legendTextObj = {
-  x_coord: 200,
-  y_coord: 14,
-  text_anchor: "end",
-  font_size: "14px"
-};
-
-const legendRectObj = {
-  x: 210,
-  width: 18,
-  height: 18
-};
-
-const legendObj = {
-  distance_between: 20
-};
 
 export default class LineGraph extends Component {
 
@@ -76,10 +58,7 @@ export default class LineGraph extends Component {
 
     addLegend(
       g,
-      colorMapping,
-      legendObj,
-      legendRectObj,
-      legendTextObj     
+      colorMapping     
     );
   }
 

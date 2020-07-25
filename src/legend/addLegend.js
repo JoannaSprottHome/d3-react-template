@@ -1,3 +1,20 @@
+const textObj = {
+    x_coord: 200,
+    y_coord: 14,
+    text_anchor: "end",
+    font_size: "14px"
+  };
+  
+  const rectObj = {
+    x: 210,
+    width: 18,
+    height: 18
+  };
+  
+  const legendObj = {
+    distance_between: 20
+  };
+
 const appendText = (legend, textObj) => {
     const { x_coord, y_coord, text_anchor, font_size } = textObj;
     legend.append("text")
@@ -38,7 +55,7 @@ const addBase = (g, colorMapping, legendObj) => {
  * @param {Data to specify colored rectangles} rectObj 
  * @param {Data to specify legend} legendObj 
  */
-const addLegend = (g, colorMapping, legendObj, rectObj, textObj) => {  
+const addLegend = (g, colorMapping) => {  
     const legend = addBase(g, colorMapping, legendObj);
     appendColoredSquares(legend, rectObj);
     appendText(legend, textObj);        
