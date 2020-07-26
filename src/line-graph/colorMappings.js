@@ -1,5 +1,3 @@
-import { scaleOrdinal } from 'd3';
-
 /**
  * Calculate each item in pie chart percentage
  * @param {item} element 
