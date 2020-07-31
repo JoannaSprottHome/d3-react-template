@@ -1,12 +1,12 @@
 const textObj = {
-    x_coord: 200,
+    x_coord: 190,
     y_coord: 14,
-    text_anchor: "end",
+    text_anchor: "start",
     font_size: "14px"
   };
   
   const rectObj = {
-    x: 210,
+    x: 160,
     width: 18,
     height: 18
   };
