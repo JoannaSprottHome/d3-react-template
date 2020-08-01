@@ -10,6 +10,6 @@ After cloning run:
 
 ### Example Charts
 
-<img src="images/pie-chart-image.png" width="300">
+<img src="images/pie-chart.png" width="300">
 <br/>
 <img src="images/line-graph.png" width="300">
