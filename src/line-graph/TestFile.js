@@ -16,16 +16,12 @@ export default class TestFile extends Component {
   };
 
   createGraph(data) {   
-    // may need to build up a function here and pass the whole thing to read CSV... 
     readCSV("./data/sample.csv", formatArrayByDate);
-    console.log("passing this point");
   }
 
   render() {
       return (
-      <div className="center">
-        Test File           
-      </div>
+      <div></div>
     );
   }
 }
