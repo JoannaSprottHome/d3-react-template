@@ -1,5 +1,5 @@
 
-import { returnMargin } from "../generic/margins";
+import { returnMargin } from "../margins/margins";
 
 // MARGIN ////////////////////////////////
 const marginData = {  
