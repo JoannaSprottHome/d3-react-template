@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as shape from 'd3-shape';
 import { select } from 'd3';
-import { returnMargin } from "../generic/margins";
+import { returnMargin } from "../margins/margins";
 import { getcolors } from "./pieChartColorMappings";
 import { addLegend } from "../legend/addLegend";
 

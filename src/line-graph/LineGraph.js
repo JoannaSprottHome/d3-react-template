@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as d3Line from 'd3-shape';
 import { select, scaleLinear, scaleTime, axisBottom, axisLeft, max, min } from 'd3';
-import { returnMargin } from "../generic/margins";
+import { returnMargin } from "../margins/margins";
 import '../App.css';
 import { getData } from "./getData";
 import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./axis";
