@@ -7,9 +7,9 @@ import { csv } from 'd3';
  * @param {Path to CSV file} path 
  * @param {Callback to be executed} callback 
  */
-const readCSV = (path, callback) => {  
+const readCSV = (path, callback, callbackArgs) => {  
   csv(path).then(data => {
-    if (callback) callback(data);
+    if (callback) callback(data, callbackArgs);
   });         
 }; 
 
