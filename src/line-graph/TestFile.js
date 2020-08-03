@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { getData } from "./getData";
 import { readCSV } from "../csv/readCSV";
-import { formatArrayByDateTotals } from "../csv/formatCSV";
+import { formatArrayByDateTotals, formatArrayByDate } from "../csv/formatCSV";
 import { propsToConsolidate } from "./lineProps";
 
 export default class TestFile extends Component {
