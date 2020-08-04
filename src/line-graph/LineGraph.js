@@ -4,7 +4,7 @@ import { select, scaleLinear, scaleTime, axisBottom, axisLeft, max, min } from '
 import { returnMargin } from "../margins/margins";
 import '../App.css';
 import { getData } from "./getData";
-import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "./axis";
+import { appendYAxisText, appendXAxisText, appendXAxis, appendYAxis } from "../axis/axis";
 import { xAxisTextParam, yAxisTextParam, marginData, xAxisParam, yAxisParam, lineParam } from "./parameters";
 import { appendLine } from "./line";
 import { addLegend } from "../legend/addLegend";
