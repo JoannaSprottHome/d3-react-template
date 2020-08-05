@@ -4,17 +4,7 @@ import { select } from 'd3';
 import { returnMargin } from "../margins/margins";
 import { getcolors } from "./pieChartColorMappings";
 import { addLegend } from "../legend/addLegend";
-
-const colorArray = [ "#82BEC0", "#0B575B", "#d9534f" ];
-
-const marginData = {  
-  top: 5, 
-  right: 10, 
-  bottom: 30, 
-  left: 100, 
-  width: 980,
-  height: 350
-};
+import { marginData, colorArray } from "./parameters";
 
 const { width, height } = returnMargin(marginData);
 
