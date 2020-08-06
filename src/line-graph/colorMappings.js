@@ -5,7 +5,7 @@
  */
 const getcolors = (data, colorArray) => {
     const colorMapping = data.map((each, index) => {
-        return { result: `${"Title..."}`, color: colorArray[index] }
+        return { result: `${Object.keys(each)[0]}`, color: colorArray[index] }
     });
     return {
         colorMapping, 
