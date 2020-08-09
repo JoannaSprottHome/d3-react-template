@@ -53,7 +53,7 @@ export default class LineGraph extends Component {
     //       .y(function (d) { return y(d.y); });
     const { strokeColors } = lineParam;
     const { colorMapping } = getcolors(data, strokeColors);  
-    let svg = select("#svg-line");
+    let svg = select("#svg-bar");
     const g = svg.append("g").attr("transform", "translate(" + width / 1 + "," + height / 1.8 + ")");   
     
     // https://bl.ocks.org/d3noob/8952219
@@ -76,7 +76,7 @@ export default class LineGraph extends Component {
       <div className="center">
         <h1 className="margin-top-medium">Bar Chart</h1>
         <div>
-          <svg ref={node => this.node = node} width={500} height={220}  id="svg-line" className="centerGraph"></svg> 
+          <svg ref={node => this.node = node} width={500} height={220}  id="svg-bar" className="centerGraph"></svg> 
         </div>            
       </div>
     );
