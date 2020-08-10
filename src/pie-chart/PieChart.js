@@ -24,7 +24,7 @@ export default class PieChart extends Component {
     select(node).append("g");    
 
     let svg = select("#svg-pie"),
-        radius = Math.min(width, height) / 2,
+        radius = Math.min(width, height) / 3,
         g = svg.append("g").attr("transform", "translate(" + width / 1.33 + "," + height / 1.8 + ")"),
         legendG = svg.append("g").attr("transform", "translate(" + width / 1.25 + "," + height / 1.8 + ")"); 
         const { colorMapping, colors } = getcolors(data, colorArray);
@@ -56,7 +56,7 @@ export default class PieChart extends Component {
       <div className="center">
         <h1 className="margin-top-medium">Pie Chart</h1>
         <div>
-          <svg ref={node => this.node = node} width={1300} height={450}  id="svg-pie" ></svg> 
+          <svg ref={node => this.node = node} width={1375} height={350}  id="svg-pie" ></svg> 
         </div>            
       </div>
     );

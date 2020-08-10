@@ -76,7 +76,7 @@ export default class LineGraph extends Component {
       <div className="center">
         <h1 className="margin-top-medium">Bar Chart</h1>
         <div>
-          <svg ref={node => this.node = node} width={500} height={220}  id="svg-bar" className="centerGraph"></svg> 
+          <svg ref={node => this.node = node} width={500} height={300}  id="svg-bar" className="centerGraph"></svg> 
         </div>            
       </div>
     );
