@@ -19,10 +19,10 @@ export default class LineGraph extends Component {
   }
 
   componentDidMount() {
-    this.createGraph(getDataWithKey());
+    this.createGraph(getDataWithKey(), this.props.svgProps.id);
   };
 
-  createGraph(data) {
+  createGraph(data, id) {
     const node = this.node;
     // Construct the scale and axis from only 1 line
     // skip this step and just use data if you have 1 line (i.e. 1D array)
@@ -53,7 +53,7 @@ export default class LineGraph extends Component {
           .y(function (d) { return y(d.y); });
     const { strokeColors } = lineParam;
     const { colorMapping } = getcolors(data, strokeColors);  
-    let svg = select("#svg-line");
+    let svg = select(`#${id}`);
     const g = svg.append("g").attr("transform", "translate(" + width / 1 + "," + height / 1.8 + ")");    
       
     if (data && data.length > 0) {
@@ -76,11 +76,17 @@ export default class LineGraph extends Component {
   }
 
   render() {
+    const { svgProps } = this.props;
       return (
       <div className="center">
         <h1 className="margin-top-medium">Line Graph</h1>
         <div>
-          <svg ref={node => this.node = node} width={500} height={300}  id="svg-line" className="centerGraph"></svg> 
+          <svg 
+            ref={node => this.node = node} 
+            width={svgProps.width} 
+            height={svgProps.height}  
+            id={svgProps.id}
+            className="centerGraph" />
         </div>            
       </div>
     );
