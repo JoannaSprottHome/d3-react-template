@@ -12,7 +12,13 @@ class App extends Component {
       return (
       <div className="center margin-bottom-medium">
         <PieChart /> 
-        <LineGraph />  
+        <LineGraph svgProps={
+          { 
+            width: 500, 
+            height: 300,
+            id:"svg-line"
+          }
+          } />  
         <TestFile /> 
         <BarChart />
       </div>
