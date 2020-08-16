@@ -82,11 +82,11 @@ export default class LineGraph extends Component {
         <h1 className="margin-top-medium">Line Graph</h1>
         <div>
           <svg 
-          ref={node => this.node = node} 
-          width={svgProps.width} 
-          height={svgProps.height}  
-          id={svgProps.id}
-          className="centerGraph" />
+            ref={node => this.node = node} 
+            width={svgProps.width} 
+            height={svgProps.height}  
+            id={svgProps.id}
+            className="centerGraph" />
         </div>            
       </div>
     );
