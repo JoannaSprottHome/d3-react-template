@@ -11,7 +11,15 @@ class App extends Component {
   render() {
       return (
       <div className="center margin-bottom-medium">
-        <PieChart /> 
+        <PieChart 
+          svgProps={
+            { 
+              width: 1375, 
+              height: 350,
+              id:"svg-pie"
+            }
+          }
+        /> 
         <LineGraph 
           svgProps={
             { 
@@ -21,7 +29,14 @@ class App extends Component {
             }
           } />  
         <TestFile /> 
-        <BarChart />
+        <BarChart 
+          svgProps={
+            { 
+              width: 500, 
+              height: 300,
+              id:"svg-bar"
+            }
+          } />
       </div>
     );
   }
